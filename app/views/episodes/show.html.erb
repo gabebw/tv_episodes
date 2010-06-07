@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @episode.name %>
+</p>
+
+<p>
+  <b>Season:</b>
+  <%=h @episode.season %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%=h @episode.number %>
+</p>
+
+
+<%= link_to 'Edit', edit_episode_path(@episode) %> |
+<%= link_to 'Back', episodes_path %>
