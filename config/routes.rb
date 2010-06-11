@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :shows
+  map.resources :shows, :has_many => :episodes
 
   map.root :controller => 'episodes'
   map.resources :episodes
