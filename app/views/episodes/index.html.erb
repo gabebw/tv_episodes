@@ -1,4 +1,5 @@
-<h1>Listing episodes</h1>
+<h1>All episodes<%= " for #{@show.name}" unless @show.nil? %>
+</h1>
 
 <table>
   <tr>
@@ -6,6 +7,7 @@
     <th>Season</th>
     <th>Number</th>
   </tr>
+
 
 <% @episodes.each do |episode| %>
   <tr>
@@ -21,4 +23,8 @@
 
 <br />
 
-<%= link_to 'New episode', new_episode_path %>
+<% if params[:show_id] %>
+  <%= link_to 'New episode', new_show_episode_path(params[:show_id]) %>
+<% else %>
+  <%= link_to 'New episode', new_episode_path %>
+<% end %>
