@@ -13,6 +13,11 @@
   <%=h @episode.number %>
 </p>
 
+<p>
+  <b>Show:</b>
+  <%=h @episode.show.name unless @episode.show.nil? %>
+</p>
+
 
 <%= link_to 'Edit', edit_episode_path(@episode) %> |
 <%= link_to 'Back', episodes_path %>
