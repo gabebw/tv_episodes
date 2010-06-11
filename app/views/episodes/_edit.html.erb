@@ -1,0 +1,20 @@
+<% fields_for(@episode) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :season %><br />
+    <%= f.text_field :season %>
+  </p>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <%# The option with id = @episode.show_id will be selected from the list of Show.all %>
+  <%# Use each show's id as the value and show.name as the value %>
+  <%= collection_select(:episode, :show_id, Show.all, :id, :name) %>
+  or <%= link_to "Add a new show", new_show_path %>
+<% end %>
