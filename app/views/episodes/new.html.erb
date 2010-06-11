@@ -16,6 +16,11 @@
     <%= f.text_field :number %>
   </p>
   <p>
+    <%# Pre-select the show if given /shows/:show_id/episodes/new %>
+    <%= collection_select(:episode, :show_id, Show.all, :id, :name, {:selected => lambda {|x| params[:show_id ]} }) %>
+    or <%= link_to "Add a new show", new_show_path %>
+  </p>
+  <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
