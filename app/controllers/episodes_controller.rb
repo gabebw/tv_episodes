@@ -2,8 +2,15 @@ class EpisodesController < ApplicationController
   # GET /episodes
   # GET /episodes.xml
   def index
-    @episodes = Episode.all
-
+    if params[:show_id]
+      # /shows/:show_id/episodes
+      # Only get episodes for this show
+      @episodes = Episode.find(:all, :conditions => {:show_id => params[:show_id]})
+      @show = Show.find(:first, :conditions => ["id = ?", params[:show_id]])
+    else
+      @episodes = Episode.all
+      @show = nil
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @episodes }
@@ -58,6 +65,13 @@ class EpisodesController < ApplicationController
   # PUT /episodes/1.xml
   def update
     @episode = Episode.find(params[:id])
+    @show = nil
+    begin
+      @show = Show.find(params[:episode][:show_id])
+    rescue ActiveRecord::RecordNotFound
+    end
+    params[:episode][:show] = @show
+    
 
     respond_to do |format|
       if @episode.update_attributes(params[:episode])
