@@ -21,14 +21,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
-      if @user.save
-        flash[:notice] = 'Registration successful.'
-        redirect_to root_url
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+    if @user.save
+      flash[:notice] = 'Registration successful.'
+      redirect_to root_url
+    else
+      render :action => "new"
     end
   end
 
