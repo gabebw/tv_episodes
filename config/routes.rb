@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :users
+
   map.resources :shows, :has_many => :episodes
 
   map.root :controller => 'episodes'
