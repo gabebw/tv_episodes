@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class ShowTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "invalid with empty attributes" do
+    show = Show.new
+    assert !show.valid?
+    assert show.errors.invalid?(:name)
   end
 end
