@@ -1,0 +1,11 @@
+# Even with authlogic, only have to pass name, password, email to User.create
+# and it does the rest. Yay, authlogic!
+gabe:
+  name: Gabe B-W
+  password: puppies
+  email: gbw@brandeis.edu
+
+david:
+  name: David Baumgold
+  password: kittens
+  email: baumgold@brandeis.edu
