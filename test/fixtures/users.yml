@@ -9,7 +9,7 @@ gabe:
   #single_access_token: <%= Authlogic::Random.friendly_token %>
   #perishable_token: <%= Authlogic::Random.friendly_token %>
 
-gabe:
+david:
   username: David Baumgold
   email: baumgold@brandeis.edu
   password_salt: <%= salt = Authlogic::Random.hex_token %>
