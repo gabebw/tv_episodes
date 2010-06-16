@@ -1,11 +1,17 @@
-# Even with authlogic, only have to pass name, password, email to User.create
-# and it does the rest. Yay, authlogic!
+# http://rdoc.info/rdoc/binarylogic/authlogic/blob/184f3b1d253bbc2ced3c4a148ec3f288ea65b169/Authlogic/TestCase
+
 gabe:
   username: Gabe B-W
-  password: puppies
   email: gbw@brandeis.edu
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("puppies" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
+  #single_access_token: <%= Authlogic::Random.friendly_token %>
+  #perishable_token: <%= Authlogic::Random.friendly_token %>
 
-david:
+gabe:
   username: David Baumgold
-  password: kittens
   email: baumgold@brandeis.edu
+  password_salt: <%= salt = Authlogic::Random.hex_token %>
+  crypted_password: <%= Authlogic::CryptoProviders::Sha512.encrypt("kittens" + salt) %>
+  persistence_token: <%= Authlogic::Random.hex_token %>
